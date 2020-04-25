@@ -17,15 +17,15 @@ import Header from './components/header';
 import Footer from './components/footer';
 
 import './App.css';
-// import { getPosts } from './features/posts';
+import { getPosts } from './redux/posts';
 
 
 const App = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    console.log('init app dispatch actions');
-    // dispatch(getPosts());
+    // console.log('init app dispatch actions');
+    dispatch(getPosts());
   });
 
   return (

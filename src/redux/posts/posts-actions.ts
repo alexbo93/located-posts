@@ -41,7 +41,7 @@ export const updatePostSuccess = (post: Post): ActionStandard<Post> => ({
 });
 
 export const getPosts = (): Action => ({
-  type: ADD_POST
+  type: GET_POSTS
 });
 
 export const setPosts = (posts: Posts): ActionStandard<Posts> => ({

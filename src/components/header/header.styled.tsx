@@ -40,5 +40,5 @@ export const HeaderNavItem = styled.li`
   margin-right: 25px;
   line-height: 60px;
 
-  color: #106964;
+  color: #8c54a1;
 `;

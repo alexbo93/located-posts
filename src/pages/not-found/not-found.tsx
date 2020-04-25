@@ -1,11 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+import { MainContainer } from "components/container";
+
 const NotFound: React.FC<{}> = () => (
-  <React.Fragment>
+  <MainContainer>
     <h1>The Page you are looking for is not found</h1>
     <Link to="/">Go Home</Link>
-  </React.Fragment>
+  </MainContainer>
 );
 
 export default NotFound;

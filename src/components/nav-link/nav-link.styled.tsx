@@ -5,7 +5,7 @@ export const NavLink = styled(Link)`
   text-decoration: none;
 
   i {
-    color: #106964;
+    color: #8c54a1;
     margin-left: 10px;
   }
 
@@ -16,7 +16,7 @@ export const NavLink = styled(Link)`
   i,
   &:active,
   &:visited {
-    color: #106964;
+    color: #8c54a1;
   }
 
   @media (max-width: 600px) {
