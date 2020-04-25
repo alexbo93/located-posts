@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-d
 
 import NewPost from './pages/new-post';
 import PostsPage from './pages/posts';
-import Post from './pages/post';
+import PostDetails from './pages/post';
 import UpdatePost from './pages/update-post';
 import NotFound from './pages/not-found';
 
@@ -30,7 +30,7 @@ const App = () => {
           <Route path='/post/new' exact>
             <NewPost />
           </Route>
-          <Route path='/post/:id' component={Post} />
+          <Route path='/post/:id' component={PostDetails} />
           <Route path='/update/:id' component={UpdatePost} />
           <Route path='/' exact>
             <PostsPage />
