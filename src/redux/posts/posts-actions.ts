@@ -1,5 +1,5 @@
-import { Action } from "redux";
-import { ActionStandard, Post, Posts } from "../types";
+import { Action } from 'redux';
+import { ActionStandard, Post, Posts } from '../types';
 
 export const ADD_POST = 'ADD_POST';
 export const ADD_POST_SUCCESS = 'ADD_POST_SUCCESS';
@@ -12,39 +12,39 @@ export const SET_POSTS = 'SET_POSTS';
 
 export const addPost = (post: Post): ActionStandard<Post> => ({
   type: ADD_POST,
-  payload: post
+  payload: post,
 });
 
 export const addPostSuccess = (post: Post): ActionStandard<Post> => ({
-  type: ADD_POST,
-  payload: post
+  type: ADD_POST_SUCCESS,
+  payload: post,
 });
 
 export const removePost = (postId: number): ActionStandard<number> => ({
   type: REMOVE_POST,
-  payload: postId
+  payload: postId,
 });
 
 export const removePostSuccess = (post: Post): ActionStandard<Post> => ({
   type: REMOVE_POST_SUCCESS,
-  payload: post
+  payload: post,
 });
 
 export const updatePost = (post: Post): ActionStandard<Post> => ({
   type: UPDATE_POST,
-  payload: post
+  payload: post,
 });
 
 export const updatePostSuccess = (post: Post): ActionStandard<Post> => ({
   type: UPDATE_POST_SUCCESS,
-  payload: post
+  payload: post,
 });
 
 export const getPosts = (): Action => ({
-  type: GET_POSTS
+  type: GET_POSTS,
 });
 
 export const setPosts = (posts: Posts): ActionStandard<Posts> => ({
   type: SET_POSTS,
-  payload: posts
+  payload: posts,
 });

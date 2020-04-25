@@ -1,13 +1,22 @@
-import { all, call, put, takeLatest, fork } from "redux-saga/effects";
-import { ADD_POST, GET_POSTS, REMOVE_POST, UPDATE_POST, setPosts, addPostSuccess, removePostSuccess, updatePostSuccess } from "./posts-actions";
-import { ActionStandard, Post } from "../types";
-import callApi from "../../utils/api-caller";
-import { HTTP_METHODS } from "../../constants";
+import { all, call, put, takeLatest, fork } from 'redux-saga/effects';
+import {
+  ADD_POST,
+  GET_POSTS,
+  REMOVE_POST,
+  UPDATE_POST,
+  setPosts,
+  addPostSuccess,
+  removePostSuccess,
+  updatePostSuccess,
+} from './posts-actions';
+import { ActionStandard, Post } from '../types';
+import callApi from '../../utils/api-caller';
+import { HTTP_METHODS } from '../../constants';
 
 function* addPostSaga({ payload }: ActionStandard<Post>) {
   try {
     // SET LOADER?
-    const addedPost = yield call(callApi, HTTP_METHODS.POST);
+    const addedPost = yield call(callApi, HTTP_METHODS.POST, undefined, payload);
     yield put(addPostSuccess(addedPost));
   } catch (error) {
     console.error(error);

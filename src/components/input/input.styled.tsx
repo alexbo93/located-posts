@@ -13,3 +13,10 @@ export const CustomInput = styled.input`
   border-radius: 5px;
   padding-left: 10px;
 `;
+
+export const CustomTextArea = styled.textarea`
+  font-family: inherit;
+  border: 1px solid #999;
+  border-radius: 5px;
+  padding-left: 10px;
+`;
