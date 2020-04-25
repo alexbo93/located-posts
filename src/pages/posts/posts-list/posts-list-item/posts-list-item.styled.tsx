@@ -52,7 +52,7 @@ export const PostsIconContainer = styled.div`
   }
 
   @media (max-width: 600px) {
-    width: 90%;
+    width: 80%;
   }
 `;
 

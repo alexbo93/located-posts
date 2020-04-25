@@ -13,11 +13,7 @@ const Posts: React.FC<{}> = () => {
     <MainContainer>
       <h1>POSTS LIST PAGE</h1>
       <Filters />
-      {posts.length ? (
-        <PostsList posts={posts} onPostRemove={() => {}} onPostUpdate={() => {}} />
-      ) : (
-        'No posts found'
-      )}
+      <PostsList posts={posts} onPostRemove={() => {}} onPostUpdate={() => {}} />
     </MainContainer>
   );
 };
