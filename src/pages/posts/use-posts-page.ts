@@ -1,14 +1,17 @@
-import { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 
-import { selectPosts } from '../../redux/posts';
+import { selectPosts, removePost } from '../../redux/posts';
 import { sortFnMap } from './posts-collaborators';
 import { Post, Posts } from '../../redux/types';
 
 const usePostsPage = () => {
+  const dispatch = useDispatch();
   const posts = useSelector(selectPosts);
   const [orderFilter, setOrderFilter] = useState('');
   const [searchFilter, setSearchFilter] = useState('');
+
+  useEffect(() => {}, [posts]);
 
   const getFilteredPosts = (): Posts => {
     let filteredPosts: Posts = [...posts];
@@ -22,9 +25,14 @@ const usePostsPage = () => {
     return filteredPosts;
   };
 
+  const onPostRemove = (id: number) => {
+    dispatch(removePost(id));
+  };
+
   return {
     setOrderFilter,
     setSearchFilter,
+    onPostRemove,
     getFilteredPosts,
   };
 };

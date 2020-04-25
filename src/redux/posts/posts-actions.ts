@@ -25,9 +25,9 @@ export const removePost = (postId: number): ActionStandard<number> => ({
   payload: postId,
 });
 
-export const removePostSuccess = (post: Post): ActionStandard<Post> => ({
+export const removePostSuccess = (postId: number): ActionStandard<number> => ({
   type: REMOVE_POST_SUCCESS,
-  payload: post,
+  payload: postId,
 });
 
 export const updatePost = (post: Post): ActionStandard<Post> => ({

@@ -27,8 +27,10 @@ function* addPostSaga({ payload }: ActionStandard<Post>) {
 function* removePostSaga({ payload }: ActionStandard<number>) {
   try {
     // SET LOADER?
-    const removedPost = yield call(callApi, HTTP_METHODS.DELETE, payload);
-    yield put(removePostSuccess(removedPost));
+    const { status } = yield call(callApi, HTTP_METHODS.DELETE, payload);
+    if (status === 204) {
+      yield put(removePostSuccess(payload));
+    }
   } catch (error) {
     console.error(error);
     // TODO: SHOW ANY KIND OF ERROR IN SCREEN (ERROR HANDLER)
@@ -38,8 +40,11 @@ function* updatePostSaga({ payload }: ActionStandard<Post>) {
   try {
     // SET LOADER?
     const post = payload;
-    const updatedPost = yield call(callApi, HTTP_METHODS.PUT, post.id, post);
-    yield put(updatePostSuccess(updatedPost));
+    const { data, status } = yield call(callApi, HTTP_METHODS.PUT, post.id, post);
+    if (status === 201) {
+      yield put(updatePostSuccess(data));
+    }
+    console.log('handle errors in sagas');
   } catch (error) {
     console.error(error);
     // TODO: SHOW ANY KIND OF ERROR IN SCREEN (ERROR HANDLER)
@@ -48,8 +53,10 @@ function* updatePostSaga({ payload }: ActionStandard<Post>) {
 function* getPostsSaga() {
   try {
     // SET LOADER?
-    const posts = yield call(callApi);
-    yield put(setPosts(posts));
+    const { data, status } = yield call(callApi);
+    if (status === 200) {
+      yield put(setPosts(data));
+    }
   } catch (error) {
     console.error(error);
     // TODO: SHOW ANY KIND OF ERROR IN SCREEN (ERROR HANDLER)
