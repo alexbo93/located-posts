@@ -4,8 +4,10 @@ import { posts } from "../posts";
 import { currentPost } from "../current-post";
 import { State } from "../types";
 
-export const createRootReducer: Function = (): Reducer<State> =>
+const createRootReducer: Function = (): Reducer<State> =>
   combineReducers<State>({
     posts,
     currentPost
   });
+
+export default createRootReducer();

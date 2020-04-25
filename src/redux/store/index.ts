@@ -3,8 +3,8 @@ import createSagaMiddleware from 'redux-saga';
 import logger from 'redux-logger';
 
 import { composeEnhancer } from "./utils";
-// import rootReducer from './root-reducer';
-// import rootSagas from './root-saga';
+import rootReducer from './root-reducer';
+import rootSagas from './root-saga';
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -19,11 +19,11 @@ const setMiddlewareList = () => {
 
 const configureStore = (initialState = undefined) => {
   let store = createStore(
-    () => ({}),
+    rootReducer,
     initialState,
     composeEnhancer(setMiddlewareList())
   );
-  // sagaMiddleware.run(rootSagas);
+  sagaMiddleware.run(rootSagas);
   return store;
 };
 

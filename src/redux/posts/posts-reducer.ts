@@ -1,21 +1,26 @@
 import {
-  ADD_POST,
-  REMOVE_POST,
-  UPDATE_POST
+  ADD_POST_SUCCESS,
+  REMOVE_POST_SUCCESS,
+  UPDATE_POST_SUCCESS,
+  SET_POSTS
 } from "./posts-actions";
 import { Posts, ActionStandard, Post } from "../types"
 
 const initialState: Posts = [];
-const postsReducer = (state = initialState, action: ActionStandard<Post>) => {
+type PostsActionTypes = | ActionStandard<Post> | ActionStandard<Posts>;
+
+const postsReducer = (state = initialState, action: PostsActionTypes) => {
   switch (action.type) {
-    case ADD_POST:
-      return [...state, action.payload];
-    case REMOVE_POST:
-      return state.filter((post: Post) => post.id === action.payload.id);
-    case UPDATE_POST:
-      const index = state.findIndex((post: Post) => post.id === action.payload.id);
-      if(index !== -1) state[index] = action.payload;
+    case ADD_POST_SUCCESS:
+      return [...state, (action.payload as Post)];
+    case REMOVE_POST_SUCCESS:
+      return state.filter((post: Post) => post.id === (action.payload as Post).id);
+    case UPDATE_POST_SUCCESS:
+      const index = state.findIndex((post: Post) => post.id === (action.payload as Post).id);
+      if(index !== -1) state[index] = (action.payload as Post);
       return state;
+    case SET_POSTS:
+      return (action.payload as Posts);
     default:
       return state;
   }
