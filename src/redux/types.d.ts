@@ -1,7 +1,7 @@
-import { Action } from "redux";
+import { Action } from 'redux';
 
 export type ActionStandard<T> = Action & {
-  payload: T
+  payload: T;
 };
 
 export type Post = {
@@ -11,9 +11,9 @@ export type Post = {
   lat?: string;
   long?: string;
   image_url?: string;
-  created_at?: Date,
-  updated_at?: Date
-}
+  created_at?: Date;
+  updated_at?: Date;
+};
 
 export type Posts = Post[];
 

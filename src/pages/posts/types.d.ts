@@ -1,4 +1,4 @@
-import { Posts, Post } from "../../redux/types";
+import { Posts, Post } from '../../redux/types';
 
 export type postActionFn = (id: number) => void;
 
@@ -13,4 +13,9 @@ export type PostsListModel = PostComponentModel & {
 
 export type PostsListItemModel = PostComponentModel & {
   post: Post;
+};
+
+export type PostsFiltersModel = {
+  onSearchChange: (value: string) => void;
+  onOrderChange: (attribute: string) => void;
 };

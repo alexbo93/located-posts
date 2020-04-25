@@ -1,21 +1,20 @@
 import React from 'react';
+
 import { MainContainer } from 'components/container';
-
 import Filters from './filters';
-import { useSelector } from 'react-redux';
-import { selectPosts } from 'redux/posts';
 import PostsList from './posts-list';
+import usePostsPage from './use-posts-page';
 
-const Posts: React.FC<{}> = () => {
-  const posts = useSelector(selectPosts);
+const PostsPage: React.FC<{}> = () => {
+  const { getFilteredPosts, setSearchFilter, setOrderFilter } = usePostsPage();
 
   return (
     <MainContainer>
-      <h1>POSTS LIST PAGE</h1>
-      <Filters />
-      <PostsList posts={posts} onPostRemove={() => {}} onPostUpdate={() => {}} />
+      <h1>Posts List</h1>
+      <Filters onSearchChange={setSearchFilter} onOrderChange={setOrderFilter} />
+      <PostsList posts={getFilteredPosts()} onPostRemove={() => {}} onPostUpdate={() => {}} />
     </MainContainer>
   );
 };
 
-export default Posts;
+export default PostsPage;

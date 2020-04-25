@@ -1,14 +1,9 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Redirect,
-} from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 
 import NewPost from './pages/new-post';
-import Posts from './pages/posts';
+import PostsPage from './pages/posts';
 import Post from './pages/post';
 import UpdatePost from './pages/update-post';
 import NotFound from './pages/not-found';
@@ -18,7 +13,6 @@ import Footer from './components/footer';
 
 import './App.css';
 import { getPosts } from './redux/posts';
-
 
 const App = () => {
   const dispatch = useDispatch();
@@ -30,21 +24,21 @@ const App = () => {
 
   return (
     <Router>
-      <div className="App">
+      <div className='App'>
         <Header />
         <Switch>
-          <Route path="/post/new" exact>
+          <Route path='/post/new' exact>
             <NewPost />
           </Route>
-          <Route path="/post/:id" component={Post} />
-          <Route path="/update/:id" component={UpdatePost} />
-          <Route path="/" exact>
-            <Posts />
+          <Route path='/post/:id' component={Post} />
+          <Route path='/update/:id' component={UpdatePost} />
+          <Route path='/' exact>
+            <PostsPage />
           </Route>
-          <Route path="/not-found">
+          <Route path='/not-found'>
             <NotFound />
           </Route>
-          <Redirect to="/not-found" />
+          <Redirect to='/not-found' />
         </Switch>
         <Footer />
       </div>
