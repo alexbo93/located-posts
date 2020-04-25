@@ -13,8 +13,8 @@ import Post from './pages/post';
 import UpdatePost from './pages/update-post';
 import NotFound from './pages/not-found';
 
-// import Header from './components/header';
-// import Footer from './components/footer';
+import Header from './components/header';
+import Footer from './components/footer';
 
 import './App.css';
 // import { getPosts } from './features/posts';
@@ -31,7 +31,7 @@ const App = () => {
   return (
     <Router>
       <div className="App">
-        {/* <Header /> */}
+        <Header />
         <Switch>
           <Route path="/post/new" exact>
             <NewPost />
@@ -46,7 +46,7 @@ const App = () => {
           </Route>
           <Redirect to="/not-found" />
         </Switch>
-        {/* <Footer /> */}
+        <Footer />
       </div>
     </Router>
   );
