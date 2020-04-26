@@ -14,11 +14,12 @@ import { CustomLabel } from 'components/generic-form/generic-form.styled';
 const PostDetails: React.FC<PostDetailsModel> = ({ match }) => {
   const dispatch = useDispatch();
   const history = useHistory();
+  const id = parseFloat(match.params.id);
   const currentPost = useSelector(selectCurrentPost);
 
   useEffect(() => {
-    dispatch(getCurrentPost(match.params.id));
-  }, [dispatch, match.params.id]);
+    dispatch(getCurrentPost(id));
+  }, [dispatch, id]);
 
   const getImg = () => {
     if (currentPost.image_url) {
@@ -28,7 +29,7 @@ const PostDetails: React.FC<PostDetailsModel> = ({ match }) => {
   };
 
   const handlePostRemove = () => {
-    dispatch(removePost(match.params.id));
+    dispatch(removePost(id));
     history.push('/');
   };
 

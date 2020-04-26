@@ -1,4 +1,5 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 
 import { MainContainer, ContentContainer } from 'components/container';
 import { MainButtonLink } from 'components/button';
@@ -10,8 +11,11 @@ import { Post } from 'redux/types';
 
 const NewPost: React.FC<{}> = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
+
   const onPostCreate = (postData: Post) => {
     dispatch(addPost(postData));
+    history.push('/');
   };
 
   return (
