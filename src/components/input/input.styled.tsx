@@ -7,7 +7,7 @@ export const CustomSelect = styled.select`
 `;
 
 export const CustomInput = styled.input`
-  height: 35px;
+  height: 40px;
   font-family: inherit;
   border: 1px solid #999;
   border-radius: 5px;

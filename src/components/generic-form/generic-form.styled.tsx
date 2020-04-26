@@ -15,6 +15,15 @@ export const FormField = styled.div`
   }
 `;
 
+export const FormFieldFull = styled(FormField)`
+  width: 100%;
+
+  input,
+  textarea {
+    width: 100%;
+  }
+`;
+
 export const CustomLabel = styled.span`
   font-weight: 600;
   display: block;
@@ -39,4 +48,11 @@ export const MapContainer = styled.div`
 export const MapElement = styled.div`
   width: 100%;
   height: 100%;
+`;
+
+export const MapGuide = styled.p`
+  font-size: 14px;
+  font-style: italic;
+  margin-bottom: 20px;
+  margin-top: 5px;
 `;

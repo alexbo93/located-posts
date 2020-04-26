@@ -12,6 +12,7 @@ import {
 import { ActionStandard, Post } from '../types';
 import callApi from '../../utils/api-caller';
 import { HTTP_METHODS } from '../../constants';
+import { emptyCurrentPost } from 'redux/current-post';
 
 function* addPostSaga({ payload }: ActionStandard<Post>) {
   try {
@@ -42,10 +43,10 @@ function* updatePostSaga({ payload }: ActionStandard<Post>) {
   try {
     // SET LOADER?
     const post = payload;
-    debugger;
     const { data, status } = yield call(callApi, HTTP_METHODS.PUT, post.id, post);
     if (status === 200) {
       yield put(updatePostSuccess(data));
+      yield put(emptyCurrentPost());
     }
     console.log('handle errors in sagas');
   } catch (error) {

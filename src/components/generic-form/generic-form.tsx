@@ -9,10 +9,12 @@ import {
   GenericFormContainer,
   CustomLabel,
   FormField,
+  FormFieldFull,
   GenericFormButton,
   GenericFormTitle,
   MapContainer,
   MapElement,
+  MapGuide,
 } from './generic-form.styled';
 import { COORDINATES } from '../../constants';
 import { Post } from 'redux/types';
@@ -51,10 +53,11 @@ const GenericForm: React.FC<GenericFormModel> = ({
             required
           />
         </FormField>
-        <FormField>
+        <FormFieldFull>
           <CustomLabel>Post Description</CustomLabel>
           <CustomTextArea
             name='content'
+            rows={5}
             value={postData.content}
             placeholder='Write post description...'
             onChange={(event: React.ChangeEvent<HTMLTextAreaElement>) =>
@@ -62,7 +65,8 @@ const GenericForm: React.FC<GenericFormModel> = ({
             }
             required
           />
-        </FormField>
+        </FormFieldFull>
+        <CustomLabel>Locate your post!</CustomLabel>
         <Map
           googleMapURL='https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=AIzaSyACj2TdifLnRFhJWamL4i3xDINBCwo-8fc'
           loadingElement={<div style={{ height: '100%' }}>loading...</div>}
@@ -71,6 +75,18 @@ const GenericForm: React.FC<GenericFormModel> = ({
           defaultCenter={getMapCenter()}
           onLocationChange={onLocationChange}
         />
+        <MapGuide>Right click over the map to select the location of the post</MapGuide>
+        <FormFieldFull>
+          <CustomLabel>Post image</CustomLabel>
+          <CustomInput
+            name='image_url'
+            value={postData.image_url}
+            placeholder="Paste post's image url..."
+            onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+              onFieldChange(event.target.name, event.target.value)
+            }
+          />
+        </FormFieldFull>
         <GenericFormButton as='button' type='submit'>
           {buttonLabel}
         </GenericFormButton>

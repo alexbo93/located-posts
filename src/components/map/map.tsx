@@ -7,7 +7,7 @@ const Map: React.FC<MapModel> = ({ defaultCenter, onLocationChange = () => {} })
   return (
     <GoogleMap
       defaultZoom={10}
-      defaultCenter={defaultCenter}
+      center={defaultCenter}
       onRightClick={(e: any) => onLocationChange(e.latLng)}
     >
       <Marker position={defaultCenter} />

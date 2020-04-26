@@ -2,15 +2,20 @@ import React, { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { MainContainer, ContentContainer, BackLinkContainer } from 'components/container';
-import { MainButtonLink } from 'components/button';
+import {
+  MainContainer,
+  ContentContainer,
+  BackLinkContainer,
+  PostNotFound,
+} from 'components/container';
+import { MainButton } from 'components/button';
 import GenericForm from 'components/generic-form';
 
 import { Post } from 'redux/types';
 import { RouterIdPageModel } from '../shared/types';
 
 import { updatePost } from 'redux/posts';
-import { selectCurrentPost, getCurrentPost } from 'redux/current-post';
+import { selectCurrentPost, getCurrentPost, emptyCurrentPost } from 'redux/current-post';
 
 const UpdatePost: React.FC<RouterIdPageModel> = ({ match }) => {
   const currentPost = useSelector(selectCurrentPost);
@@ -28,20 +33,31 @@ const UpdatePost: React.FC<RouterIdPageModel> = ({ match }) => {
     history.push('/');
   };
 
+  const onUpdateLeft = () => {
+    dispatch(emptyCurrentPost());
+    history.push('/');
+  };
+
   return (
     <MainContainer>
       <h1>Change your post details!</h1>
       <BackLinkContainer>
-        <MainButtonLink to='/'>Go Back to List</MainButtonLink>
+        <MainButton as='button' onClick={onUpdateLeft}>
+          Go Back to List
+        </MainButton>
       </BackLinkContainer>
       <ContentContainer data-testid='new-post__form-container'>
-        <GenericForm
-          updating
-          onSubmit={onPostUpdate}
-          title='Set your post information'
-          buttonLabel='Update Post'
-          initialData={currentPost}
-        />
+        {currentPost ? (
+          <GenericForm
+            updating
+            onSubmit={onPostUpdate}
+            title='Set your post information'
+            buttonLabel='Update Post'
+            initialData={currentPost}
+          />
+        ) : (
+          <PostNotFound>Post Not Found</PostNotFound>
+        )}
       </ContentContainer>
     </MainContainer>
   );
