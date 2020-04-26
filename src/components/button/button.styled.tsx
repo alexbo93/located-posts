@@ -15,3 +15,9 @@ export const MainButtonLink = styled(Link)`
     background-color: #106964;
   }
 `;
+
+export const MainButton = styled(MainButtonLink)`
+  font-family: inherit;
+  font-size: inherit;
+  cursor: pointer;
+`;

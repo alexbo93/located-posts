@@ -1,16 +1,19 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+
+import { selectCurrentPost, getCurrentPost } from 'redux/current-post';
+import { removePost } from 'redux/posts';
+import { PostDetailsModel } from './types';
 
 import { MainContainer, BackLinkContainer, ContentContainer } from 'components/container';
-import { MainButtonLink } from 'components/button';
-import { selectCurrentPost, getCurrentPost } from 'redux/current-post';
-
-import { PostImageContainer } from './post.styled';
-import { PostDetailsModel } from './types';
+import { MainButtonLink, MainButton } from 'components/button';
+import { PostImageContainer, PostActionButtonsContainer } from './post.styled';
 import { CustomLabel } from 'components/generic-form/generic-form.styled';
 
 const PostDetails: React.FC<PostDetailsModel> = ({ match }) => {
   const dispatch = useDispatch();
+  const history = useHistory();
   const currentPost = useSelector(selectCurrentPost);
 
   useEffect(() => {
@@ -21,7 +24,12 @@ const PostDetails: React.FC<PostDetailsModel> = ({ match }) => {
     if (currentPost.image_url) {
       return <img src={currentPost.image_url} alt='post-details' />;
     }
-    return <i className='fas fa-map-marker-alt fa-10x' />;
+    return <i className='fas fa-map-marker-alt fa-7x' />;
+  };
+
+  const handlePostRemove = () => {
+    dispatch(removePost(match.params.id));
+    history.push('/');
   };
 
   return (
@@ -31,10 +39,16 @@ const PostDetails: React.FC<PostDetailsModel> = ({ match }) => {
         <MainButtonLink to='/'>Go Back to List</MainButtonLink>
       </BackLinkContainer>
       <ContentContainer data-testid='post-detail__form-container'>
-        <h3>Here goes the content of the post</h3>
+        <h3>{currentPost.title}</h3>
         <PostImageContainer>{getImg()}</PostImageContainer>
-        <CustomLabel>Title of the Post</CustomLabel>
-        <p>{currentPost.title}</p>
+        <PostActionButtonsContainer>
+          <MainButtonLink to={`/update/${match.params.id}`}>
+            <i className='fa fa-pen'></i>Update
+          </MainButtonLink>
+          <MainButton as='button' onClick={handlePostRemove}>
+            <i className='fa fa-trash-alt'></i>Remove
+          </MainButton>
+        </PostActionButtonsContainer>
         <CustomLabel>Post Description</CustomLabel>
         <p>{currentPost.content}</p>
       </ContentContainer>

@@ -16,8 +16,10 @@ import { HTTP_METHODS } from '../../constants';
 function* addPostSaga({ payload }: ActionStandard<Post>) {
   try {
     // SET LOADER?
-    const addedPost = yield call(callApi, HTTP_METHODS.POST, undefined, payload);
-    yield put(addPostSuccess(addedPost));
+    const { data, status } = yield call(callApi, HTTP_METHODS.POST, undefined, payload);
+    if (status === 201) {
+      yield put(addPostSuccess(data));
+    }
   } catch (error) {
     console.error(error);
     // TODO: SHOW ANY KIND OF ERROR IN SCREEN (ERROR HANDLER)

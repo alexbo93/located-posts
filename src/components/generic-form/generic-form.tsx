@@ -3,7 +3,7 @@ import { GenericFormModel } from './types';
 
 import useGenericForm from './use-generic-form';
 import { CustomInput, CustomTextArea } from '../input';
-import { MainButtonLink } from 'components/button';
+import { MainButton } from 'components/button';
 
 import {
   GenericFormContainer,

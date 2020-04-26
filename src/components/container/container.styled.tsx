@@ -9,12 +9,20 @@ export const MainContainer = styled.div`
 
 export const ContentContainer = styled.div`
   width: 50%;
-  margin: 30px auto 50px;
+  margin: 10px auto 50px;
   border: 1px solid #999;
   border-radius: 5px;
   background-color: #ddd;
   padding: 30px;
   min-height: 500px;
+
+  h3 {
+    margin-top: 0;
+  }
+
+  i {
+    margin-right: 7px;
+  }
 
   @media (max-width: 768px) and (min-width: 601px) {
     width: 80%;

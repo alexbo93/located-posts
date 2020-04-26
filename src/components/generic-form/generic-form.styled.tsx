@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { MainButtonLink } from 'components/button';
+import { MainButton } from 'components/button';
 
 export const GenericFormContainer = styled.form`
   width: 100%;
@@ -21,7 +21,7 @@ export const CustomLabel = styled.span`
   margin-bottom: 10px;
 `;
 
-export const GenericFormButton = styled(MainButtonLink)`
+export const GenericFormButton = styled(MainButton)`
   display: block;
 `;
 
