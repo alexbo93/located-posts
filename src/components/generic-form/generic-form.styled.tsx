@@ -29,3 +29,14 @@ export const GenericFormTitle = styled.h2`
   margin-top: 0;
   margin-bottom: 20px;
 `;
+
+export const MapContainer = styled.div`
+  margin-top: 20px;
+  width: 100%;
+  height: 400px;
+`;
+
+export const MapElement = styled.div`
+  width: 100%;
+  height: 100%;
+`;

@@ -35,6 +35,7 @@ const UpdatePost: React.FC<RouterIdPageModel> = ({ match }) => {
       </BackLinkContainer>
       <ContentContainer data-testid='new-post__form-container'>
         <GenericForm
+          updating
           onSubmit={onPostUpdate}
           title='Set your post information'
           buttonLabel='Update Post'

@@ -3,6 +3,7 @@ import { GenericFormModel } from './types';
 
 import useGenericForm from './use-generic-form';
 import { CustomInput, CustomTextArea } from '../input';
+import Map from '../map';
 
 import {
   GenericFormContainer,
@@ -10,7 +11,11 @@ import {
   FormField,
   GenericFormButton,
   GenericFormTitle,
+  MapContainer,
+  MapElement,
 } from './generic-form.styled';
+import { COORDINATES } from '../../constants';
+import { Post } from 'redux/types';
 
 const GenericForm: React.FC<GenericFormModel> = ({
   onSubmit,
@@ -19,9 +24,17 @@ const GenericForm: React.FC<GenericFormModel> = ({
   initialData = {
     title: '',
     content: '',
+    lat: COORDINATES.DEFAULT[0],
+    long: COORDINATES.DEFAULT[1],
   },
+  updating = false,
 }) => {
-  const { postData, handleSubmit, onFieldChange } = useGenericForm(onSubmit, initialData);
+  const { postData, handleSubmit, onFieldChange, getMapCenter } = useGenericForm(
+    onSubmit,
+    initialData as Post,
+    updating,
+  );
+  console.log('LOADER!! FOR MAP AND FOR APP');
   return (
     <React.Fragment>
       <GenericFormTitle>{title}</GenericFormTitle>
@@ -50,8 +63,13 @@ const GenericForm: React.FC<GenericFormModel> = ({
             required
           />
         </FormField>
-        <CustomInput name='lat' value={postData.lat || ''} placeholder='Set post latitude...' />
-        <CustomInput name='title' value={postData.long || ''} placeholder='Set post longitude...' />
+        <Map
+          googleMapURL='https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=AIzaSyACj2TdifLnRFhJWamL4i3xDINBCwo-8fc'
+          loadingElement={<div style={{ height: '100%' }}>loading...</div>}
+          containerElement={<MapContainer />}
+          mapElement={<MapElement />}
+          defaultCenter={getMapCenter()}
+        />
         <GenericFormButton as='button' type='submit'>
           {buttonLabel}
         </GenericFormButton>
