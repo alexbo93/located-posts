@@ -1,4 +1,5 @@
 import { Post } from '../../redux/types';
+import { latLngObject } from 'components/map/types';
 
 export type GenericFormModel = {
   onSubmit: (postData: Post) => void;
@@ -16,6 +17,7 @@ export type UseGenericFormModel = {
     lat: number;
     lng: number;
   };
+  onLocationChange: (latLng: latLngObject) => void;
 };
 
 export type formDataModel = {

@@ -3,9 +3,13 @@ import { GoogleMap, withScriptjs, withGoogleMap, Marker } from 'react-google-map
 
 import { MapModel } from './types';
 
-const Map: React.FC<MapModel> = ({ defaultCenter }) => {
+const Map: React.FC<MapModel> = ({ defaultCenter, onLocationChange = () => {} }) => {
   return (
-    <GoogleMap defaultZoom={10} defaultCenter={defaultCenter}>
+    <GoogleMap
+      defaultZoom={10}
+      defaultCenter={defaultCenter}
+      onRightClick={(e: any) => onLocationChange(e.latLng)}
+    >
       <Marker position={defaultCenter} />
     </GoogleMap>
   );

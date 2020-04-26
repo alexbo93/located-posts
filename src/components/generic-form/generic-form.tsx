@@ -29,7 +29,7 @@ const GenericForm: React.FC<GenericFormModel> = ({
   },
   updating = false,
 }) => {
-  const { postData, handleSubmit, onFieldChange, getMapCenter } = useGenericForm(
+  const { postData, handleSubmit, onFieldChange, getMapCenter, onLocationChange } = useGenericForm(
     onSubmit,
     initialData as Post,
     updating,
@@ -69,6 +69,7 @@ const GenericForm: React.FC<GenericFormModel> = ({
           containerElement={<MapContainer />}
           mapElement={<MapElement />}
           defaultCenter={getMapCenter()}
+          onLocationChange={onLocationChange}
         />
         <GenericFormButton as='button' type='submit'>
           {buttonLabel}

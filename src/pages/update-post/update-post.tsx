@@ -23,13 +23,14 @@ const UpdatePost: React.FC<RouterIdPageModel> = ({ match }) => {
   }, [dispatch, id]);
 
   const onPostUpdate = (postData: Post) => {
-    dispatch(updatePost(postData));
+    const newPost = { ...currentPost, ...postData };
+    dispatch(updatePost(newPost));
     history.push('/');
   };
 
   return (
     <MainContainer>
-      <h1>Create your own post!</h1>
+      <h1>Change your post details!</h1>
       <BackLinkContainer>
         <MainButtonLink to='/'>Go Back to List</MainButtonLink>
       </BackLinkContainer>

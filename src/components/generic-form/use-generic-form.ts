@@ -3,6 +3,7 @@ import { UseGenericFormModel } from './types';
 import { Post } from 'redux/types';
 
 import { formDataModel } from './types';
+import { latLngObject } from 'components/map/types';
 
 const useGenericForm = (
   onSubmit: (postData: Post) => void,
@@ -44,11 +45,21 @@ const useGenericForm = (
     lng: parseFloat(postData.long as string),
   });
 
+  const onLocationChange = (latLng: latLngObject) => {
+    const newPostData = {
+      ...postData,
+      lat: latLng.lat(),
+      long: latLng.lng(),
+    };
+    setPostData(newPostData);
+  };
+
   return {
     postData,
     onFieldChange,
     handleSubmit,
     getMapCenter,
+    onLocationChange,
   };
 };
 
