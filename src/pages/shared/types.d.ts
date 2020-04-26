@@ -1,4 +1,4 @@
-export type PostDetailsModel = {
+export type RouterIdPageModel = {
   match: {
     params: {
       id: string;

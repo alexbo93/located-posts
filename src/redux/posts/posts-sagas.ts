@@ -43,7 +43,7 @@ function* updatePostSaga({ payload }: ActionStandard<Post>) {
     // SET LOADER?
     const post = payload;
     const { data, status } = yield call(callApi, HTTP_METHODS.PUT, post.id, post);
-    if (status === 201) {
+    if (status === 200) {
       yield put(updatePostSuccess(data));
     }
     console.log('handle errors in sagas');

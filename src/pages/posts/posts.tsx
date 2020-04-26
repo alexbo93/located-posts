@@ -6,13 +6,23 @@ import PostsList from './posts-list';
 import usePostsPage from './use-posts-page';
 
 const PostsPage: React.FC<{}> = () => {
-  const { getFilteredPosts, setSearchFilter, setOrderFilter, onPostRemove } = usePostsPage();
+  const {
+    getFilteredPosts,
+    setSearchFilter,
+    setOrderFilter,
+    onPostRemove,
+    onPostUpdate,
+  } = usePostsPage();
 
   return (
     <MainContainer>
       <h1>Posts List</h1>
       <Filters onSearchChange={setSearchFilter} onOrderChange={setOrderFilter} />
-      <PostsList posts={getFilteredPosts()} onPostRemove={onPostRemove} onPostUpdate={() => {}} />
+      <PostsList
+        posts={getFilteredPosts()}
+        onPostRemove={onPostRemove}
+        onPostUpdate={onPostUpdate}
+      />
     </MainContainer>
   );
 };

@@ -3,7 +3,6 @@ import { GenericFormModel } from './types';
 
 import useGenericForm from './use-generic-form';
 import { CustomInput, CustomTextArea } from '../input';
-import { MainButton } from 'components/button';
 
 import {
   GenericFormContainer,
@@ -13,8 +12,16 @@ import {
   GenericFormTitle,
 } from './generic-form.styled';
 
-const GenericForm: React.FC<GenericFormModel> = ({ onSubmit, title }) => {
-  const { postData, handleSubmit, onFieldChange } = useGenericForm(onSubmit);
+const GenericForm: React.FC<GenericFormModel> = ({
+  onSubmit,
+  title,
+  buttonLabel,
+  initialData = {
+    title: '',
+    content: '',
+  },
+}) => {
+  const { postData, handleSubmit, onFieldChange } = useGenericForm(onSubmit, initialData);
   return (
     <React.Fragment>
       <GenericFormTitle>{title}</GenericFormTitle>
@@ -43,10 +50,10 @@ const GenericForm: React.FC<GenericFormModel> = ({ onSubmit, title }) => {
             required
           />
         </FormField>
-        <CustomInput name='lat' value={postData.lat} placeholder='Set post latitude...' />
-        <CustomInput name='title' value={postData.long} placeholder='Set post longitude...' />
+        <CustomInput name='lat' value={postData.lat || ''} placeholder='Set post latitude...' />
+        <CustomInput name='title' value={postData.long || ''} placeholder='Set post longitude...' />
         <GenericFormButton as='button' type='submit'>
-          Create Post
+          {buttonLabel}
         </GenericFormButton>
       </GenericFormContainer>
     </React.Fragment>

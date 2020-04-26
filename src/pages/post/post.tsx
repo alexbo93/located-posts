@@ -4,14 +4,14 @@ import { useHistory } from 'react-router-dom';
 
 import { selectCurrentPost, getCurrentPost } from 'redux/current-post';
 import { removePost } from 'redux/posts';
-import { PostDetailsModel } from './types';
+import { RouterIdPageModel } from '../shared/types';
 
 import { MainContainer, BackLinkContainer, ContentContainer } from 'components/container';
 import { MainButtonLink, MainButton } from 'components/button';
 import { PostImageContainer, PostActionButtonsContainer } from './post.styled';
 import { CustomLabel } from 'components/generic-form/generic-form.styled';
 
-const PostDetails: React.FC<PostDetailsModel> = ({ match }) => {
+const PostDetails: React.FC<RouterIdPageModel> = ({ match }) => {
   const dispatch = useDispatch();
   const history = useHistory();
   const id = parseFloat(match.params.id);

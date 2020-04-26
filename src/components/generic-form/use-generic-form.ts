@@ -1,15 +1,19 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { UseGenericFormModel } from './types';
 import { Post } from 'redux/types';
 
-const useGenericForm = (onSubmit: (postData: Post) => void): UseGenericFormModel => {
+const useGenericForm = (
+  onSubmit: (postData: Post) => void,
+  initialData: Post,
+): UseGenericFormModel => {
   const [postData, setPostData] = useState({
-    title: '',
-    lat: '',
-    long: '',
-    content: '',
-    image_url: '',
+    title: initialData.title,
+    content: initialData.content,
   });
+
+  useEffect(() => {
+    setPostData(initialData);
+  }, [initialData]);
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();

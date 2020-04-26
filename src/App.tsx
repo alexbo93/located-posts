@@ -18,7 +18,6 @@ const App = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    // console.log('init app dispatch actions');
     dispatch(getPosts());
   });
 
