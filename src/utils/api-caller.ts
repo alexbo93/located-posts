@@ -8,7 +8,7 @@ const callApi = async (
   id?: number,
   body?: Post,
 ): Promise<{ data?: Post; status: number }> => {
-  const options: RequestInit = { method };
+  const options: RequestInit = { method, mode: 'cors' };
   const url = id ? `${apiURL}${id}` : apiURL;
   if (method === HTTP_METHODS.POST || method === HTTP_METHODS.PUT) {
     options.headers = { 'Content-Type': 'application/json' };

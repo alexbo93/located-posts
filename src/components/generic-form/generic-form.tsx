@@ -3,6 +3,7 @@ import { GenericFormModel } from './types';
 
 import useGenericForm from './use-generic-form';
 import { CustomInput, CustomTextArea } from '../input';
+import CustomSpinner from '../spinner';
 import Map from '../map';
 
 import {
@@ -28,6 +29,7 @@ const GenericForm: React.FC<GenericFormModel> = ({
     content: '',
     lat: COORDINATES.DEFAULT[0],
     long: COORDINATES.DEFAULT[1],
+    image_url: '',
   },
   updating = false,
 }) => {
@@ -36,7 +38,7 @@ const GenericForm: React.FC<GenericFormModel> = ({
     initialData as Post,
     updating,
   );
-  console.log('LOADER!! FOR MAP AND FOR APP');
+  console.log('LOADER!! FOR MAP AND FOR APP', getMapCenter());
   return (
     <React.Fragment>
       <GenericFormTitle>{title}</GenericFormTitle>
@@ -69,7 +71,7 @@ const GenericForm: React.FC<GenericFormModel> = ({
         <CustomLabel>Locate your post!</CustomLabel>
         <Map
           googleMapURL='https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=AIzaSyACj2TdifLnRFhJWamL4i3xDINBCwo-8fc'
-          loadingElement={<div style={{ height: '100%' }}>loading...</div>}
+          loadingElement={<CustomSpinner className='lds-dual-ring' />}
           containerElement={<MapContainer />}
           mapElement={<MapElement />}
           defaultCenter={getMapCenter()}
@@ -80,7 +82,7 @@ const GenericForm: React.FC<GenericFormModel> = ({
           <CustomLabel>Post image</CustomLabel>
           <CustomInput
             name='image_url'
-            value={postData.image_url}
+            value={postData.image_url || ''}
             placeholder="Paste post's image url..."
             onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
               onFieldChange(event.target.name, event.target.value)
