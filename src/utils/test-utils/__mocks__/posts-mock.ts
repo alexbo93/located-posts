@@ -1,4 +1,4 @@
-import { Posts } from '../../../redux/types';
+import { Posts, Post } from '../../../redux/types';
 
 const mockPosts: Posts = [
   {
@@ -26,5 +26,17 @@ const mockPosts: Posts = [
     updated_at: new Date('2020-04-26T16:11:09.160Z'),
   },
 ];
+
+export const newPost: Post = {
+  content: 'Valencia is one the most important cities in Spain',
+  created_at: new Date('2020-03-27T14:02:27.990Z'),
+  id: 2,
+  image_url:
+    'https://static.independent.co.uk/s3fs-public/styles/story_medium/public/thumbnails/image/2017/05/17/15/barcelona-skyline.jpg',
+  lat: '41.50104039624048',
+  long: '2.3757178150934966',
+  title: 'Valencia',
+  updated_at: new Date('2020-04-26T16:11:09.160Z'),
+};
 
 export default mockPosts;

@@ -22,6 +22,7 @@ function* addPostSaga({ payload }: ActionStandard<Post>) {
     if (status !== 201) {
       throw new Error();
     }
+
     yield put(addPostSuccess(data));
     yield put(setMessage(MESSAGES.POST_ADDED));
   } catch (error) {
@@ -36,6 +37,7 @@ function* removePostSaga({ payload }: ActionStandard<number>) {
     if (status !== 204) {
       throw new Error();
     }
+
     yield put(removePostSuccess(payload));
     yield put(setMessage(MESSAGES.POST_REMOVED));
   } catch (error) {
@@ -50,6 +52,7 @@ function* updatePostSaga({ payload }: ActionStandard<Post>) {
     if (status !== 200) {
       throw new Error();
     }
+
     yield put(updatePostSuccess(data));
     yield put(setMessage(MESSAGES.POST_UPDATED));
     yield put(emptyCurrentPost());
@@ -64,6 +67,7 @@ function* getPostsSaga() {
     if (status !== 200) {
       throw new Error();
     }
+
     yield put(setPosts(data));
   } catch (error) {
     yield put(setError(ERRORS.POSTS_RETRIEVED));
