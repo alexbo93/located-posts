@@ -2,6 +2,12 @@ import { Action } from 'redux';
 
 export type ActionStandard<T> = Action & {
   payload: T;
+  error?: string | null;
+};
+
+export type ErrorStateModel<T> = {
+  data: T;
+  error: string | null;
 };
 
 export type Post = {
@@ -19,5 +25,5 @@ export type Posts = Post[];
 
 export type State = {
   posts: Posts;
-  currentPost: Post;
+  currentPost: ErrorStateModel<Post>;
 };

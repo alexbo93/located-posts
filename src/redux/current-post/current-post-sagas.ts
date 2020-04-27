@@ -1,5 +1,5 @@
 import { all, call, put, takeLatest, fork } from 'redux-saga/effects';
-import { GET_POST, setCurrentPost } from './current-post-actions';
+import { GET_POST, setCurrentPost, setCurrentPostError } from './current-post-actions';
 import { ActionStandard } from '../types';
 import callApi from '../../utils/api-caller';
 import { HTTP_METHODS } from '../../constants';
@@ -8,12 +8,12 @@ function* getPostSaga({ payload }: ActionStandard<number>) {
   try {
     // SET LOADER?
     const { data, status } = yield call(callApi, HTTP_METHODS.GET, payload);
-    if (status === 200) {
-      yield put(setCurrentPost(data));
+    if (status !== 200) {
+      throw new Error("Post couldn't be retrieved");
     }
+    yield put(setCurrentPost(data));
   } catch (error) {
-    console.error(error);
-    // TODO: SHOW ANY KIND OF ERROR IN SCREEN (ERROR HANDLER)
+    yield put(setCurrentPostError(error));
   }
 }
 

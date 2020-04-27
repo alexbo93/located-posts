@@ -15,10 +15,10 @@ import { Post } from 'redux/types';
 import { RouterIdPageModel } from '../shared/types';
 
 import { updatePost } from 'redux/posts';
-import { selectCurrentPost, getCurrentPost, emptyCurrentPost } from 'redux/current-post';
+import { getCurrentPost, emptyCurrentPost, selectCurrentPostData } from 'redux/current-post';
 
 const UpdatePost: React.FC<RouterIdPageModel> = ({ match }) => {
-  const currentPost = useSelector(selectCurrentPost);
+  const currentPost = useSelector(selectCurrentPostData);
   const dispatch = useDispatch();
   const history = useHistory();
   const id = parseFloat(match.params.id);

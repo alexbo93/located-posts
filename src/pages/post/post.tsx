@@ -2,7 +2,12 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
-import { selectCurrentPost, getCurrentPost, emptyCurrentPost } from 'redux/current-post';
+import {
+  selectCurrentPost,
+  getCurrentPost,
+  emptyCurrentPost,
+  selectCurrentPostData,
+} from 'redux/current-post';
 import { removePost } from 'redux/posts';
 import { RouterIdPageModel } from '../shared/types';
 
@@ -22,7 +27,7 @@ const PostDetails: React.FC<RouterIdPageModel> = ({ match }) => {
   const dispatch = useDispatch();
   const history = useHistory();
   const id = parseFloat(match.params.id);
-  const currentPost = useSelector(selectCurrentPost);
+  const currentPost = useSelector(selectCurrentPostData);
 
   useEffect(() => {
     dispatch(getCurrentPost(id));
