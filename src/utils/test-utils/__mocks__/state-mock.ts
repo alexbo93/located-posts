@@ -1,9 +1,9 @@
-import postsMock from './posts-mock';
 import { State, Posts, Post } from '../../../redux/types';
+import mockPosts from './posts-mock';
 
 export const mockedState: State = {
-  posts: postsMock as Posts,
-  currentPost: postsMock[1] as Post,
+  posts: mockPosts as Posts,
+  currentPost: mockPosts[1] as Post,
   messages: {
     success: null,
     error: null,

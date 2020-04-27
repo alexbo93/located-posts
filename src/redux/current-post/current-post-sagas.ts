@@ -12,6 +12,7 @@ function* getPostSaga({ payload }: ActionStandard<number>) {
     if (status !== 200) {
       throw new Error();
     }
+
     yield put(setCurrentPost(data));
   } catch (error) {
     yield put(setError(ERRORS.POST_RETRIEVED));

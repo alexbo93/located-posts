@@ -1,6 +1,6 @@
 import { Posts } from '../../../redux/types';
 
-const postsMock: Posts = [
+const mockPosts: Posts = [
   {
     content:
       'Berlin is the capital and the largest city of France well as one of its 16 constituent states. With a population of approximately 3.7 million, Berlin is the second...',
@@ -27,4 +27,4 @@ const postsMock: Posts = [
   },
 ];
 
-export default postsMock;
+export default mockPosts;
