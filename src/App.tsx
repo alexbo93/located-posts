@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
-import { ToastProvider } from 'react-toast-notifications';
 
 import NewPost from './pages/new-post';
 import PostsPage from './pages/posts';

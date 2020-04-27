@@ -38,7 +38,7 @@ const GenericForm: React.FC<GenericFormModel> = ({
     initialData as Post,
     updating,
   );
-  console.log('LOADER!! FOR MAP AND FOR APP', getMapCenter());
+
   return (
     <React.Fragment>
       <GenericFormTitle>{title}</GenericFormTitle>
