@@ -11,19 +11,21 @@ import {
 } from './posts-actions';
 import { ActionStandard, Post } from '../types';
 import callApi from '../../utils/api-caller';
-import { HTTP_METHODS } from '../../constants';
+import { HTTP_METHODS, MESSAGES, ERRORS } from '../../constants';
 import { emptyCurrentPost } from 'redux/current-post';
+import { setMessage, setError } from 'redux/messages';
 
 function* addPostSaga({ payload }: ActionStandard<Post>) {
   try {
     // SET LOADER?
     const { data, status } = yield call(callApi, HTTP_METHODS.POST, undefined, payload);
-    if (status === 201) {
-      yield put(addPostSuccess(data));
+    if (status !== 201) {
+      throw new Error();
     }
+    yield put(addPostSuccess(data));
+    yield put(setMessage(MESSAGES.POST_ADDED));
   } catch (error) {
-    console.error(error);
-    // TODO: SHOW ANY KIND OF ERROR IN SCREEN (ERROR HANDLER)
+    yield put(setError(ERRORS.ADD));
   }
 }
 
@@ -31,12 +33,13 @@ function* removePostSaga({ payload }: ActionStandard<number>) {
   try {
     // SET LOADER?
     const { status } = yield call(callApi, HTTP_METHODS.DELETE, payload);
-    if (status === 204) {
-      yield put(removePostSuccess(payload));
+    if (status !== 204) {
+      throw new Error();
     }
+    yield put(removePostSuccess(payload));
+    yield put(setMessage(MESSAGES.POST_REMOVED));
   } catch (error) {
-    console.error(error);
-    // TODO: SHOW ANY KIND OF ERROR IN SCREEN (ERROR HANDLER)
+    yield put(setError(ERRORS.REMOVE));
   }
 }
 function* updatePostSaga({ payload }: ActionStandard<Post>) {
@@ -44,26 +47,26 @@ function* updatePostSaga({ payload }: ActionStandard<Post>) {
     // SET LOADER?
     const post = payload;
     const { data, status } = yield call(callApi, HTTP_METHODS.PUT, post.id, post);
-    if (status === 200) {
-      yield put(updatePostSuccess(data));
-      yield put(emptyCurrentPost());
+    if (status !== 200) {
+      throw new Error();
     }
-    console.log('handle errors in sagas');
+    yield put(updatePostSuccess(data));
+    yield put(setMessage(MESSAGES.POST_UPDATED));
+    yield put(emptyCurrentPost());
   } catch (error) {
-    console.error(error);
-    // TODO: SHOW ANY KIND OF ERROR IN SCREEN (ERROR HANDLER)
+    yield put(setError(ERRORS.UPDATE));
   }
 }
 function* getPostsSaga() {
   try {
     // SET LOADER?
     const { data, status } = yield call(callApi);
-    if (status === 200) {
-      yield put(setPosts(data));
+    if (status !== 200) {
+      throw new Error();
     }
+    yield put(setPosts(data));
   } catch (error) {
-    console.error(error);
-    // TODO: SHOW ANY KIND OF ERROR IN SCREEN (ERROR HANDLER)
+    yield put(setError(ERRORS.POSTS_RETRIEVED));
   }
 }
 

@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
+import { ToastProvider } from 'react-toast-notifications';
 
 import NewPost from './pages/new-post';
 import PostsPage from './pages/posts';
@@ -10,6 +11,7 @@ import NotFound from './pages/not-found';
 
 import Header from './components/header';
 import Footer from './components/footer';
+import ToasterNotifier from './components/notifier';
 
 import './App.css';
 import { getPosts } from './redux/posts';
@@ -24,6 +26,7 @@ const App = () => {
   return (
     <Router>
       <div className='App'>
+        <ToasterNotifier />
         <Header />
         <Switch>
           <Route path='/post/new' exact>

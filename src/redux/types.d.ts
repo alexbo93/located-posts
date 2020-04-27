@@ -26,4 +26,10 @@ export type Posts = Post[];
 export type State = {
   posts: Posts;
   currentPost: ErrorStateModel<Post>;
+  messages: messagesStateModel;
+};
+
+export type messagesStateModel = {
+  success: string | null;
+  error: string | null;
 };
