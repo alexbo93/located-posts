@@ -1,15 +1,12 @@
 import React from 'react';
 import { Store } from 'redux';
-import { render, waitFor, fireEvent } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 
 import PostsPage from './posts';
 
-import { selectPosts } from 'redux/posts';
 import configureStore from '../../redux/store';
 import { mockedState } from '../../utils/test-utils/__mocks__/state-mock';
 import ConnectedComponent from '../../utils/test-utils';
-import { mockApi } from '../../utils/test-utils/api-mock';
-import callApi from '../../utils/api-caller';
 import { ORDER_FILTERS } from '../../constants';
 
 jest.mock('../../utils/api-caller');
