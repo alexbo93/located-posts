@@ -30,9 +30,9 @@ const PostDetails: React.FC<RouterIdPageModel> = ({ match }) => {
 
   const getImg = () => {
     if (currentPost.image_url) {
-      return <img src={currentPost.image_url} alt='post-details' />;
+      return <img data-testid='post-image' src={currentPost.image_url} alt='post-details' />;
     }
-    return <i className='fas fa-map-marker-alt fa-7x' />;
+    return <i data-testid='alt-post-image' className='fas fa-map-marker-alt fa-7x' />;
   };
 
   const handlePostRemove = () => {
@@ -52,7 +52,7 @@ const PostDetails: React.FC<RouterIdPageModel> = ({ match }) => {
 
   const getPostContent = () => (
     <React.Fragment>
-      <h3>{currentPost.title}</h3>
+      <h3 data-testid='post-title'>{currentPost.title}</h3>
       <PostImageContainer>{getImg()}</PostImageContainer>
       <PostActionButtonsContainer>
         <MainButtonLink to={`/update/${match.params.id}`}>
@@ -63,12 +63,12 @@ const PostDetails: React.FC<RouterIdPageModel> = ({ match }) => {
         </MainButton>
       </PostActionButtonsContainer>
       <CustomLabel>Post Description</CustomLabel>
-      <p>{currentPost.content}</p>
+      <p data-testid='post-content'>{currentPost.content}</p>
       <Map
         googleMapURL='https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=AIzaSyACj2TdifLnRFhJWamL4i3xDINBCwo-8fc'
         loadingElement={<div style={{ height: '100%' }}>loading...</div>}
         containerElement={<MapContainer />}
-        mapElement={<MapElement />}
+        mapElement={<MapElement data-testid='map-element' />}
         defaultCenter={getMapCenter()}
       />
     </React.Fragment>

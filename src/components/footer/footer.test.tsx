@@ -2,35 +2,31 @@ import React from 'react';
 import { render } from '@testing-library/react';
 
 import Footer from './footer';
-import { createStore } from 'redux';
-import rootReducer from '../../redux/store/root-reducer';
 
-// import ConnectedComponent from '../../utils/test-utils';
+import ConnectedComponent from '../../utils/test-utils';
+import configureStore from 'redux/store';
+import { Store } from 'redux';
 
-// let store = createStore(rootReducer);
-// describe('Footer Component', () => {
-//   it('Should render the footer container and 3 links', () => {
-//     const { getByTestId, container } = render(
-//       <ConnectedComponent store={store}>
-//         <Footer />
-//       </ConnectedComponent>
-//     );
+const getConnectedComponent = (store: Store) => (
+  <ConnectedComponent store={store}>
+    <Footer />
+  </ConnectedComponent>
+);
+let store = configureStore();
+describe('Footer Component', () => {
+  it('Should render the footer container and 2 links', () => {
+    const { getByTestId, container } = render(getConnectedComponent(store));
 
-//     const links = container.getElementsByTagName('a');
-//     expect(getByTestId('footer-container')).toBeDefined();
-//     expect(links.length).toBe(3);
-//   });
+    const links = container.getElementsByTagName('a');
+    expect(getByTestId('footer-container')).toBeDefined();
+    expect(links.length).toBe(2);
+  });
 
-//   it('Should point to Home, List and Picture of the day section with the links', () => {
-//     const { container } = render(
-//       <ConnectedComponent store={store}>
-//         <Footer />
-//       </ConnectedComponent>
-//     );
+  it('Should point to Home and create new', () => {
+    const { container } = render(getConnectedComponent(store));
 
-//     const links = container.getElementsByTagName('a');
-//     expect(links[0].href).toContain('/');
-//     expect(links[1].href).toContain('/asteroids');
-//     expect(links[2].href).toContain('/pod');
-//   });
-// });
+    const links = container.getElementsByTagName('a');
+    expect(links[0].href).toContain('/');
+    expect(links[1].href).toContain('/post/new');
+  });
+});
