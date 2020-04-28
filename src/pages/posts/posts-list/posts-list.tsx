@@ -19,7 +19,7 @@ const PostsList: React.FC<PostsListModel> = ({ posts, onPostRemove, onPostUpdate
   return (
     <div data-testid='posts-list__container'>
       <PostsListLabels />
-      {posts.length ? getList() : 'Not Posts found'}
+      {posts.length ? getList() : 'No Posts found'}
     </div>
   );
 };

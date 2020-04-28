@@ -65,6 +65,7 @@ function* getPostsSaga() {
   try {
     // SET LOADER?
     const { data, status } = yield call(callApi);
+
     if (status !== 200) {
       throw new Error();
     }

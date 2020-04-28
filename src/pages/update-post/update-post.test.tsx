@@ -1,6 +1,6 @@
 import React from 'react';
 import { Store } from 'redux';
-import { render, waitFor, fireEvent, findAllByTestId } from '@testing-library/react';
+import { render, waitFor, fireEvent } from '@testing-library/react';
 
 import UpdatePost from './update-post';
 
