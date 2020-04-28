@@ -3,8 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
     "@types/jest": "^24.9.1",
     "@types/node": "^12.12.37",
@@ -28,7 +26,7 @@
   "scripts": {
     "start": "node server.js",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --env=jest-environment-jsdom-sixteen",
     "eject": "react-scripts eject",
     "startdev": "react-scripts start"
   },
@@ -48,12 +46,15 @@
     ]
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^5.5.0",
+    "@testing-library/react": "^10.0.3",
     "@types/react-redux": "^7.1.7",
     "@types/react-router-dom": "^5.1.4",
     "@types/react-toast-notifications": "^2.4.0",
     "@types/redux-logger": "^3.0.7",
     "@types/styled-components": "^5.1.0",
     "install": "^0.13.0",
+    "jest-environment-jsdom-sixteen": "^1.0.3",
     "npm": "^6.14.4",
     "redux-logger": "^3.0.6"
   }

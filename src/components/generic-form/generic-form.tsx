@@ -47,6 +47,7 @@ const GenericForm: React.FC<GenericFormModel> = ({
           <CustomLabel>Post Title</CustomLabel>
           <CustomInput
             name='title'
+            data-testid='form-title'
             value={postData.title}
             placeholder='Write post title...'
             onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
@@ -59,6 +60,7 @@ const GenericForm: React.FC<GenericFormModel> = ({
           <CustomLabel>Post Description</CustomLabel>
           <CustomTextArea
             name='content'
+            data-testid='form-content'
             rows={5}
             value={postData.content}
             placeholder='Write post description...'
@@ -82,6 +84,7 @@ const GenericForm: React.FC<GenericFormModel> = ({
           <CustomLabel>Post image</CustomLabel>
           <CustomInput
             name='image_url'
+            data-testid='form-image'
             value={postData.image_url || ''}
             placeholder="Paste post's image url..."
             onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
@@ -89,7 +92,7 @@ const GenericForm: React.FC<GenericFormModel> = ({
             }
           />
         </FormFieldFull>
-        <GenericFormButton as='button' type='submit'>
+        <GenericFormButton as='button' type='submit' data-testid='form-submit'>
           {buttonLabel}
         </GenericFormButton>
       </GenericFormContainer>

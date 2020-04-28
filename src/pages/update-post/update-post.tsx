@@ -29,6 +29,7 @@ const UpdatePost: React.FC<RouterIdPageModel> = ({ match }) => {
 
   const onPostUpdate = (postData: Post) => {
     const newPost = { ...currentPost, ...postData };
+
     dispatch(updatePost(newPost));
     history.push('/');
   };
@@ -42,12 +43,12 @@ const UpdatePost: React.FC<RouterIdPageModel> = ({ match }) => {
     <MainContainer>
       <h1>Change your post details!</h1>
       <BackLinkContainer>
-        <MainButton as='button' onClick={onUpdateLeft}>
+        <MainButton as='button' onClick={onUpdateLeft} data-testid='back-button'>
           Go Back to List
         </MainButton>
       </BackLinkContainer>
-      <ContentContainer data-testid='new-post__form-container'>
-        {currentPost ? (
+      <ContentContainer data-testid='update-post__form-container'>
+        {currentPost.title !== '' ? (
           <GenericForm
             updating
             onSubmit={onPostUpdate}
