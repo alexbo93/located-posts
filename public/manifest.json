@@ -1,9 +1,9 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Located Posts",
+  "name": "Located Posts Typescript portal",
   "icons": [
     {
-      "src": "favicon.png",
+      "src": "assets/favicon.png",
       "sizes": "32x32",
       "type": "image/x-icon"
     }

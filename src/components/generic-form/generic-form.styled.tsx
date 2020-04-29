@@ -13,6 +13,15 @@ export const FormField = styled.div`
   textarea {
     width: 90%;
   }
+
+  @media (max-width: 600px) {
+    width: 100%;
+
+    input,
+    textarea {
+      width: 100%;
+    }
+  }
 `;
 
 export const FormFieldFull = styled(FormField)`
