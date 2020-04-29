@@ -7,7 +7,6 @@ export const FiltersContainer = styled.div`
   width: 100%;
   margin-bottom: 30px;
   border-radius: 5px;
-  display: flex;
 
   @media (max-width: 600px) {
     padding: 15px;
@@ -26,6 +25,11 @@ export const FilterItem = styled.div`
 
   @media (max-width: 600px) {
     width: 100%;
+
+    select,
+    input {
+      width: 100%;
+    }
   }
 `;
 
@@ -36,7 +40,7 @@ export const FilterItemRight = styled(FilterItem)`
 
   @media (max-width: 600px) {
     input {
-      float: left;
+      float: none;
     }
   }
 `;

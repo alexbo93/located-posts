@@ -26,10 +26,6 @@ export const PostsDetailIconContainer = styled.div`
     line-height: 50px;
     cursor: pointer;
     margin-right: 7px;
-
-    &:hover {
-      font-size: 1.5rem;
-    }
   }
 `;
 
@@ -52,7 +48,7 @@ export const PostsIconContainer = styled.div`
   }
 
   @media (max-width: 600px) {
-    width: 80%;
+    width: 70%;
   }
 `;
 
